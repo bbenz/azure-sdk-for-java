@@ -34,7 +34,7 @@ public final class CreateOrUpdateMetricPercentileTests extends OnlineExperimenta
                 .setDesiredDirection(DesiredDirection.DECREASE)
                 .setDefinition(new PercentileMetricDefinition()
                     .setValue(new AggregatedValue().setEventName("PageLoad").setEventProperty("LoadTime_ms"))
-                    .setPercentile(95)),
+                    .setPercentile(95.0)),
             new RequestConditions().setIfMatch("vxexdn")
                 .setIfNoneMatch("ijchzdh")
                 .setIfUnmodifiedSince(OffsetDateTime.parse("2024-08-22T02:02:11Z"))

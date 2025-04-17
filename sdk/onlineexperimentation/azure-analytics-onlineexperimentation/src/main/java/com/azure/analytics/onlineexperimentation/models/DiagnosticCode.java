@@ -13,19 +13,19 @@ import java.util.Collection;
 public final class DiagnosticCode extends ExpandableStringEnum<DiagnosticCode> {
 
     /**
-     * The metric definition does not conform to the JSON schema.
+     * The metric definition does not conform to the required schema.
      */
     @Generated
     public static final DiagnosticCode FAILED_SCHEMA_VALIDATION = fromString("FailedSchemaValidation");
 
     /**
-     * The KQL filter condition provided is invalid.
+     * The filter condition is invalid.
      */
     @Generated
     public static final DiagnosticCode INVALID_EVENT_CONDITION = fromString("InvalidEventCondition");
 
     /**
-     * The KQL filter condition is valid but not currently supported.
+     * The filter condition is valid but not currently supported.
      */
     @Generated
     public static final DiagnosticCode UNSUPPORTED_EVENT_CONDITION = fromString("UnsupportedEventCondition");

@@ -35,7 +35,7 @@ public final class PercentileMetricDefinition extends ExperimentMetricDefinition
      * The percentile to measure.
      */
     @Generated
-    private int percentile;
+    private double percentile;
 
     /**
      * Stores updated model property, the value is property name, not serialized name.
@@ -103,22 +103,8 @@ public final class PercentileMetricDefinition extends ExperimentMetricDefinition
      * @return the percentile value.
      */
     @Generated
-    public int getPercentile() {
+    public double getPercentile() {
         return this.percentile;
-    }
-
-    /**
-     * Set the percentile property: The percentile to measure.
-     * <p>Required when create the resource.</p>
-     *
-     * @param percentile the percentile value to set.
-     * @return the PercentileMetricDefinition object itself.
-     */
-    @Generated
-    public PercentileMetricDefinition setPercentile(int percentile) {
-        this.percentile = percentile;
-        this.updatedProperties.add("percentile");
-        return this;
     }
 
     /**
@@ -133,7 +119,7 @@ public final class PercentileMetricDefinition extends ExperimentMetricDefinition
             jsonWriter.writeStartObject();
             jsonWriter.writeStringField("type", this.type == null ? null : this.type.toString());
             jsonWriter.writeJsonField("value", this.value);
-            jsonWriter.writeIntField("percentile", this.percentile);
+            jsonWriter.writeDoubleField("percentile", this.percentile);
             return jsonWriter.writeEndObject();
         }
     }
@@ -152,7 +138,7 @@ public final class PercentileMetricDefinition extends ExperimentMetricDefinition
             }
         }
         if (updatedProperties.contains("percentile")) {
-            jsonWriter.writeIntField("percentile", this.percentile);
+            jsonWriter.writeDoubleField("percentile", this.percentile);
         }
         return jsonWriter.writeEndObject();
     }
@@ -177,12 +163,26 @@ public final class PercentileMetricDefinition extends ExperimentMetricDefinition
                 } else if ("value".equals(fieldName)) {
                     deserializedPercentileMetricDefinition.value = AggregatedValue.fromJson(reader);
                 } else if ("percentile".equals(fieldName)) {
-                    deserializedPercentileMetricDefinition.percentile = reader.getInt();
+                    deserializedPercentileMetricDefinition.percentile = reader.getDouble();
                 } else {
                     reader.skipChildren();
                 }
             }
             return deserializedPercentileMetricDefinition;
         });
+    }
+
+    /**
+     * Set the percentile property: The percentile to measure.
+     * <p>Required when create the resource.</p>
+     *
+     * @param percentile the percentile value to set.
+     * @return the PercentileMetricDefinition object itself.
+     */
+    @Generated
+    public PercentileMetricDefinition setPercentile(double percentile) {
+        this.percentile = percentile;
+        this.updatedProperties.add("percentile");
+        return this;
     }
 }
