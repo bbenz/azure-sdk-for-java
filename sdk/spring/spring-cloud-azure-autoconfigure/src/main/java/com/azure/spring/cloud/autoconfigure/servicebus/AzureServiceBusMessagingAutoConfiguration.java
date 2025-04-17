@@ -37,6 +37,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -127,6 +128,12 @@ public class AzureServiceBusMessagingAutoConfiguration {
     @Configuration(proxyBeanMethods = false)
     public static class ServiceBusTemplateConfiguration {
 
+        private final ApplicationContext applicationContext;
+
+        ServiceBusTemplateConfiguration(ApplicationContext applicationContext) {
+            this.applicationContext = applicationContext;
+        }
+
         /**
          * Creates a default Service Bus namespace producer factory.
          *
@@ -159,19 +166,17 @@ public class AzureServiceBusMessagingAutoConfiguration {
         /**
          * Creates a Service Bus template.
          *
-         * @param properties The Service Bus properties.
          * @param producerFactory A Service Bus producer factory.
-         * @param consumerFactory A Service Bus consumer factory.
          * @param messageConverter A Service Bus message converter.
          * @return A Service Bus template.
          */
         @Bean
         @ConditionalOnMissingBean
         @ConditionalOnBean(ServiceBusProducerFactory.class)
-        public ServiceBusTemplate serviceBusTemplate(AzureServiceBusProperties properties,
-                                                     ServiceBusProducerFactory producerFactory,
-                                                     ServiceBusConsumerFactory consumerFactory,
+        public ServiceBusTemplate serviceBusTemplate(ServiceBusProducerFactory producerFactory,
                                                      ServiceBusMessageConverter messageConverter) {
+            ServiceBusConsumerFactory consumerFactory = applicationContext.getBean(ServiceBusConsumerFactory.class);
+            AzureServiceBusProperties properties = applicationContext.getBean(AzureServiceBusProperties.class);
             ServiceBusTemplate serviceBusTemplate = new ServiceBusTemplate(producerFactory, consumerFactory);
             serviceBusTemplate.setMessageConverter(messageConverter);
             if (properties.getProducer().getEntityType() != null) {
