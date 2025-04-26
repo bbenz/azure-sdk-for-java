@@ -41,7 +41,7 @@ public class AgentVectorStoreBatchFileSearchSample {
             .credential(new DefaultAzureCredentialBuilder().build())
             .buildClient();
 
-        Path productFile = getFile("product_info_1.md");
+        Path productFile = getFile("product_info.md");
 
         VectorStore vectorStore = agentsClient.createVectorStore(
             null, "my_vector_store",

@@ -30,8 +30,6 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 public class AgentCodeInterpreterFileAttachmentSample {
 
     public static void main(String[] args) throws FileNotFoundException, URISyntaxException {
@@ -40,7 +38,7 @@ public class AgentCodeInterpreterFileAttachmentSample {
             .credential(new DefaultAzureCredentialBuilder().build())
             .buildClient();
 
-        Path htmlFile = getFile("sample_test.html");
+        Path htmlFile = getFile("sample.html");
 
         String agentName = "code_interpreter_file_attachment_example";
         CodeInterpreterToolDefinition ciTool = new CodeInterpreterToolDefinition();
@@ -49,24 +47,21 @@ public class AgentCodeInterpreterFileAttachmentSample {
 
         OpenAIFile uploadedFile = agentsClient.uploadFile(new UploadFileRequest(
             new FileDetails(BinaryData.fromFile(htmlFile))
-            .setFilename("sample_test.html"), FilePurpose.AGENTS));
+            .setFilename("sample.html"), FilePurpose.AGENTS));
 
         MessageAttachment messageAttachment = new MessageAttachment(Arrays.asList(BinaryData.fromObject(ciTool))).setFileId(uploadedFile.getId());
 
         PersistentAgentThread thread = agentsClient.createThread();
-        assertNotNull(thread);
         ThreadMessage createdMessage = agentsClient.createMessage(
             thread.getId(),
             MessageRole.USER,
             "What does the attachment say?",
             Arrays.asList(messageAttachment),
             null);
-        assertNotNull(createdMessage);
 
         //run agent
         CreateRunOptions createRunOptions = new CreateRunOptions(thread.getId(), agent.getId()).setAdditionalInstructions("");
         ThreadRun threadRun = agentsClient.createRun(createRunOptions);
-        assertNotNull(threadRun);
 
         try {
             do {
