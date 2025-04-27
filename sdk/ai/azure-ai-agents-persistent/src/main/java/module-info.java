@@ -10,4 +10,6 @@ module com.azure.ai.agents.persistent {
 
     opens com.azure.ai.agents.persistent.implementation.models to com.azure.core;
     opens com.azure.ai.agents.persistent.models to com.azure.core;
+    exports com.azure.ai.agents.persistent.models.streaming;
+    opens com.azure.ai.agents.persistent.models.streaming to com.azure.core;
 }
