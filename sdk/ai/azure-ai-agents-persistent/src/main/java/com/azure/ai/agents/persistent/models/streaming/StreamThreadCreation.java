@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 package com.azure.ai.agents.persistent.models.streaming;
 
-
 import com.azure.ai.agents.persistent.models.PersistentAgentStreamEvent;
 
 /**

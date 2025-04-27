@@ -3,8 +3,6 @@
 package com.azure.ai.agents.persistent;
 
 import com.azure.ai.agents.persistent.implementation.models.CreateAgentRequest;
-import com.azure.ai.agents.persistent.models.CodeInterpreterToolDefinition;
-import com.azure.ai.agents.persistent.models.CreateAgentOptions;
 import com.azure.ai.agents.persistent.models.CreateRunOptions;
 import com.azure.ai.agents.persistent.models.MessageContent;
 import com.azure.ai.agents.persistent.models.MessageImageFileContent;

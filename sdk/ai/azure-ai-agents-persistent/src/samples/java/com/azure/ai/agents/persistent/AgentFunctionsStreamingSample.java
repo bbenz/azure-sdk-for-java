@@ -2,18 +2,13 @@
 // Licensed under the MIT License.
 package com.azure.ai.agents.persistent;
 
-import com.azure.ai.agents.persistent.models.CodeInterpreterToolDefinition;
 import com.azure.ai.agents.persistent.models.CreateAgentOptions;
 import com.azure.ai.agents.persistent.models.CreateRunOptions;
 import com.azure.ai.agents.persistent.models.FunctionDefinition;
 import com.azure.ai.agents.persistent.models.FunctionToolDefinition;
-import com.azure.ai.agents.persistent.models.MessageContent;
 import com.azure.ai.agents.persistent.models.MessageDeltaImageFileContent;
 import com.azure.ai.agents.persistent.models.MessageDeltaTextContent;
-import com.azure.ai.agents.persistent.models.MessageImageFileContent;
 import com.azure.ai.agents.persistent.models.MessageRole;
-import com.azure.ai.agents.persistent.models.MessageTextContent;
-import com.azure.ai.agents.persistent.models.OpenAIPageableListOfThreadMessage;
 import com.azure.ai.agents.persistent.models.PersistentAgent;
 import com.azure.ai.agents.persistent.models.PersistentAgentStreamEvent;
 import com.azure.ai.agents.persistent.models.PersistentAgentThread;
@@ -32,7 +27,6 @@ import com.azure.core.util.BinaryData;
 import com.azure.core.util.Configuration;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import reactor.core.publisher.Flux;

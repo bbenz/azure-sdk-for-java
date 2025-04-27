@@ -1,9 +1,10 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 package com.azure.ai.agents.persistent;
 
 import com.azure.ai.agents.persistent.implementation.models.CreateAgentRequest;
 import com.azure.ai.agents.persistent.models.BingCustomSearchToolDefinition;
-import com.azure.ai.agents.persistent.models.BingGroundingToolDefinition;
-import com.azure.ai.agents.persistent.models.CreateAgentOptions;
 import com.azure.ai.agents.persistent.models.CreateRunOptions;
 import com.azure.ai.agents.persistent.models.MessageContent;
 import com.azure.ai.agents.persistent.models.MessageImageFileContent;

@@ -5046,20 +5046,20 @@ public final class PersistentAgentsClient {
         List<RunAdditionalFieldList> include = options.getInclude();
         CreateRunRequest createRunRequestObj
             = new CreateRunRequest(options.getAssistantId()).setModel(options.getModel())
-            .setInstructions(options.getInstructions())
-            .setAdditionalInstructions(options.getAdditionalInstructions())
-            .setAdditionalMessages(options.getAdditionalMessages())
-            .setTools(options.getTools())
-            .setStream(true)
-            .setTemperature(options.getTemperature())
-            .setTopP(options.getTopP())
-            .setMaxPromptTokens(options.getMaxPromptTokens())
-            .setMaxCompletionTokens(options.getMaxCompletionTokens())
-            .setTruncationStrategy(options.getTruncationStrategy())
-            .setToolChoice(options.getToolChoice())
-            .setResponseFormat(options.getResponseFormat())
-            .setParallelToolCalls(options.isParallelToolCalls())
-            .setMetadata(options.getMetadata());
+                .setInstructions(options.getInstructions())
+                .setAdditionalInstructions(options.getAdditionalInstructions())
+                .setAdditionalMessages(options.getAdditionalMessages())
+                .setTools(options.getTools())
+                .setStream(true)
+                .setTemperature(options.getTemperature())
+                .setTopP(options.getTopP())
+                .setMaxPromptTokens(options.getMaxPromptTokens())
+                .setMaxCompletionTokens(options.getMaxCompletionTokens())
+                .setTruncationStrategy(options.getTruncationStrategy())
+                .setToolChoice(options.getToolChoice())
+                .setResponseFormat(options.getResponseFormat())
+                .setParallelToolCalls(options.isParallelToolCalls())
+                .setMetadata(options.getMetadata());
         BinaryData createRunRequest = BinaryData.fromObject(createRunRequestObj);
         if (include != null) {
             requestOptions.addQueryParam("include[]",
@@ -5092,7 +5092,7 @@ public final class PersistentAgentsClient {
      */
     @ServiceMethod(returns = ReturnType.SINGLE)
     public Flux<StreamUpdate> submitToolOutputsToRunStreaming(String threadId, String runId,
-                                                              List<ToolOutput> toolOutputs) {
+        List<ToolOutput> toolOutputs) {
         // Generated convenience method for submitToolOutputsToRunWithResponse
         RequestOptions requestOptions = new RequestOptions();
         SubmitToolOutputsToRunRequest submitToolOutputsToRunRequestObj
@@ -5100,8 +5100,8 @@ public final class PersistentAgentsClient {
         BinaryData submitToolOutputsToRunRequest = BinaryData.fromObject(submitToolOutputsToRunRequestObj);
         Flux<ByteBuffer> response
             = submitToolOutputsToRunWithResponse(threadId, runId, submitToolOutputsToRunRequest, requestOptions)
-            .getValue()
-            .toFluxByteBuffer();
+                .getValue()
+                .toFluxByteBuffer();
         PersistentAgentServerSentEvents eventStream = new PersistentAgentServerSentEvents(response);
         return eventStream.getEvents();
     }
