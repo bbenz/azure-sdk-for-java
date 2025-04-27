@@ -38,7 +38,7 @@ public final class AgentFabricToolSample {
 
         String agentName = "fabric_tool_example";
         RequestOptions requestOptions = new RequestOptions().setHeader("x-ms-enable-preview", "true");
-        CreateAgentRequest createAgentRequest = new CreateAgentRequest("gpt-4o")
+        CreateAgentRequest createAgentRequest = new CreateAgentRequest("gpt-4o-mini")
             .setName(agentName)
             .setInstructions("You are a helpful agent")
             .setTools(Arrays.asList(fabricToolDefinition));

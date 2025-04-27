@@ -17,8 +17,7 @@ public class AgentListThreadSample {
 
         OpenAIPageableListOfAgentThread threads = agentsClient.listThreads();
         for (PersistentAgentThread thread : threads.getData()) {
-            System.out.printf("Deleting thread ID: %s%n", thread.getId());
-            agentsClient.deleteThread(thread.getId());
+            System.out.printf("Found thread ID: %s%n", thread.getId());
         }
     }
 }

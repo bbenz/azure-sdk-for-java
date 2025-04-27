@@ -49,7 +49,7 @@ public final class AgentImageInputBase64Sample {
             new MessageInputImageUrlBlock(new MessageImageUrlParam(imageUrl)));
 
         String agentName = "image_input_example";
-        CreateAgentOptions createAgentOptions = new CreateAgentOptions("gpt-4o")
+        CreateAgentOptions createAgentOptions = new CreateAgentOptions("gpt-4o-mini")
             .setName(agentName)
             .setInstructions("You are a helpful agent");
         PersistentAgent agent = agentsClient.createAgent(createAgentOptions);

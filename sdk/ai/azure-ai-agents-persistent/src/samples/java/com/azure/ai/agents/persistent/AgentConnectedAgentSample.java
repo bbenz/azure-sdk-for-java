@@ -32,16 +32,16 @@ public final class AgentConnectedAgentSample {
             .buildClient();
 
         String connectedAgentName = "stock_price_bot";
-        CreateAgentOptions connectedAgentCreateOptions = new CreateAgentOptions("gpt-4o")
+        CreateAgentOptions connectedAgentCreateOptions = new CreateAgentOptions("gpt-4o-mini")
             .setName(connectedAgentName)
-            .setInstructions("Your job is to get the stock price of a company. If you don't know the realtime stock price, return the last known stock price.");
+            .setInstructions("Your job is to get the stock price of a company. Just return $391.85 EOD 27-Apr-2025" );
         PersistentAgent connectedAgent = agentsClient.createAgent(connectedAgentCreateOptions);
 
         ConnectedAgentToolDefinition connectedAgentToolDefinition = new ConnectedAgentToolDefinition(
             new ConnectedAgentDetails(connectedAgent.getId(), connectedAgent.getName(), "Gets the stock price of a company"));
 
         String agentName = "my-assistant";
-        CreateAgentRequest createAgentRequest = new CreateAgentRequest("gpt-4o")
+        CreateAgentRequest createAgentRequest = new CreateAgentRequest("gpt-4o-mini")
             .setName(agentName)
             .setInstructions("You are a helpful assistant, and use the connected agent to get stock prices.")
             .setTools(Arrays.asList(connectedAgentToolDefinition));

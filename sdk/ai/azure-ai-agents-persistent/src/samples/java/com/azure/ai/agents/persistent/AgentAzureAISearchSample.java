@@ -48,7 +48,7 @@ public class AgentAzureAISearchSample {
         ThreadMessage createdMessage = agentsClient.createMessage(
             thread.getId(),
             MessageRole.USER,
-            "Hello, send an email with the datetime and weather information in New York?");
+            "Which customer is from the company, Giles Ltd?");
 
         //run agent
         CreateRunOptions createRunOptions = new CreateRunOptions(thread.getId(), agent.getId())
