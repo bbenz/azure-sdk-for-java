@@ -34,7 +34,7 @@ public class AgentAzureAISearchSample {
 
         ToolResources toolResources = new ToolResources()
             .setAzureAISearch(new AzureAISearchResource()
-                .setIndexList(Arrays.asList(new AISearchIndexResource(aiSearchConnectionId, "sample_index"))));
+                .setIndexList(Arrays.asList(new AISearchIndexResource(aiSearchConnectionId, "azureblob-index"))));
 
         String agentName = "ai_search_example";
         CreateAgentOptions createAgentOptions = new CreateAgentOptions("gpt-4o-mini")
@@ -48,7 +48,7 @@ public class AgentAzureAISearchSample {
         ThreadMessage createdMessage = agentsClient.createMessage(
             thread.getId(),
             MessageRole.USER,
-            "Which customer is from the company, Giles Ltd?");
+            "Best horror movie?");
 
         //run agent
         CreateRunOptions createRunOptions = new CreateRunOptions(thread.getId(), agent.getId())

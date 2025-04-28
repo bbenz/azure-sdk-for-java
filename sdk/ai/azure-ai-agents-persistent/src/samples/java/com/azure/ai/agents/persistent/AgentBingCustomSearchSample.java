@@ -35,12 +35,13 @@ public class AgentBingCustomSearchSample {
             .credential(new DefaultAzureCredentialBuilder().build())
             .buildClient();
 
-        String bingConnectionId = Configuration.getGlobalConfiguration().get("BING_CONNECTION_ID", "");
+        String bingConnectionId = Configuration.getGlobalConfiguration().get("BING_SEARCH_CONNECTION_ID", "");
+        String bingConfigurationId = Configuration.getGlobalConfiguration().get("BING_SEARCH_CONFIGURATION_ID", "");
 
         ToolConnectionList toolConnectionList = new ToolConnectionList()
             .setConnectionList(Arrays.asList(new ToolConnection(bingConnectionId)));
 
-        SearchConfiguration searchConfiguration = new SearchConfiguration(bingConnectionId, "bingcustomsearch1");
+        SearchConfiguration searchConfiguration = new SearchConfiguration(bingConnectionId, bingConfigurationId);
         SearchConfigurationList searchConfigurationList = new SearchConfigurationList(Arrays.asList(searchConfiguration));
 
         BingCustomSearchToolDefinition bingCustomSearchToolDefinition = new BingCustomSearchToolDefinition(searchConfigurationList);
